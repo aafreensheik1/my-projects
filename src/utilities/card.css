@@ -1,0 +1,25 @@
+
+.card-component{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border:rgb(146, 92, 92) 2px solid ;
+    background:#eea29a;
+    min-height:200px;
+    min-width:300px;
+    margin: 15px;
+    margin-top: 20%;
+    padding:5px;
+    text-align: center;
+    font-size: 25px;
+}
+
+.card-link{
+    color:black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.card-link:hover{
+    color: white;
+}
