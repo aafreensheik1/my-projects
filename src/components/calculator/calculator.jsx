@@ -12,7 +12,13 @@ const Calculator = () => {
                 setUserInput((userInput).substring(0, (userInput).length - 1));
                 break;
             case '=':
-                setUserInput(eval((userInput).replace('x', '*')));
+                try {
+                    setUserInput(eval((userInput).replace('x', '*')));
+                }
+                catch (err) {
+                    alert(err.message);
+                }
+
                 break;
             default:
                 setUserInput(userInput + event.target.value);
