@@ -1,12 +1,13 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import { Calculator, DrumMachine, MainPage, MarkdownPreviewer, NotFound, RandomQuoteMachine, PomodoroClock } from '../components';
+import { Calculator, DrumMachine, WeatherApp, MainPage, MarkdownPreviewer, NotFound, RandomQuoteMachine, PomodoroClock } from '../components';
 
 const Routes = () => {
     return (
         <Switch>
             <Route path="/random-quote-machine" component={RandomQuoteMachine} />
             <Route path="/calculator" component={Calculator} />
+            <Route path="/weather-app" component={WeatherApp} />
             <Route path='/drum-machine' component={DrumMachine} />
             <Route path="/markdown-previewer" component={MarkdownPreviewer} />
             <Route path="/pomodoro-clock" component={PomodoroClock} />
