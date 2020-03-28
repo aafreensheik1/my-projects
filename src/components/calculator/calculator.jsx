@@ -5,11 +5,11 @@ const Calculator = () => {
     const [userInput, setUserInput] = useState('');
     const handleClick = (event) => {
         switch (event.target.value) {
-            case 'CE':
+            case 'C':
                 setUserInput('');
                 break;
-            case 'C':
-                setUserInput((userInput).substring(0, (userInput).length - 1));
+            case 'CE':
+                setUserInput(userInput.substring(0, userInput.length - 1));
                 break;
             case '=':
                 try {
