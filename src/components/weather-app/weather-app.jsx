@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import './weather-app.css';
 import { useState } from 'react';
-import { useEffect } from 'react';
 const WeatherApp = () => {
     const api = {
         key: '2e8aa193afccd37c5234655632ed442e',
@@ -19,11 +18,21 @@ const WeatherApp = () => {
     }
     const [query, setQuery] = useState('');
     const [weather, setWeather] = useState({});
-
+    const [errorMessage, setErrorMessage] = useState(null);
     const handleClick = async () => {
-        const { data } = await axios.get(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`);
-        setWeather(data);
-        console.log(data);
+        try {
+
+            const { data } = await axios.get(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`);
+            setWeather(data);
+            setErrorMessage(null);
+        }
+        catch (e) {
+            const { cod, message } = e.response.data;
+            if (cod == 404) {
+                setErrorMessage(message);
+                setWeather({});
+            }
+        }
     };
     const weatherBackground = (typeof weather.main != "undefined") ?
         ((weather.main.temp) > 16 ?
@@ -38,11 +47,14 @@ const WeatherApp = () => {
                         className="search-bar"
                         placeholder='Search...'
                         onChange={e => setQuery(e.target.value)}
-                        value={query} />
+                        value={query}
+                        onKeyPress={(event) => event.key === 'Enter' ? handleClick() : null} />
                     <button className="search-button"
                         onClick={handleClick}>
                         Search
                         </button>
+                    <p className="error-message">
+                        {errorMessage}</p>
                 </div>
                 <div className="date">
                     {dateBuilder(new Date())}
