@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import './random-quote-machine.css';
 import axios from 'axios';
-import '@fontawesome/react-fontawesome';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
 import { useState } from 'react';
 const RandomQuoteMachine = () => {
     const randomQuoteSource = 'https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json';
@@ -34,7 +35,7 @@ const RandomQuoteMachine = () => {
             <main style={{ backgroundColor: appColor }} >
 
                 <div className="quote-machine-container" >
-                    <i className="fas fa-quote-left"></i>
+                    <FontAwesomeIcon icon={['fas', 'quote-left']} />
                     <div className="quote-text" style={{ color: appColor }}  >{quote}
                     </div>
                     <div className="quote-author" style={{ color: appColor }}  >-{author}</div>
