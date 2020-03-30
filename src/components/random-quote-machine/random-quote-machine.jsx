@@ -9,26 +9,37 @@ const RandomQuoteMachine = () => {
     const [author, setAuthor] = useState('');
 
 
-
     useEffect(async () => {
         const { data: { quotes } } = await axios.get(randomQuoteSource);
         setQuotes(quotes);
         handleClick(quotes);
     }, [])
+    const index = Math.floor(Math.random() * quotes.length);
+    const x = Math.floor(Math.random() * 255);
+    const y = Math.floor(Math.random() * 255);
+    const z = Math.floor(Math.random() * 255);
+    const appColor = `rgb(${x},${y},${z})`;
 
 
     const handleClick = (quotes) => {
-        const index = Math.floor(Math.random() * quotes.length + 1);
         setQuote(quotes[index].quote);
         setAuthor(quotes[index].author);
+
     }
+
     return (
-        <div className="quote-machine-container" >
-            <div className="quote-text">{quote}
-            </div>
-            <div className="quote-author">-{author}</div>
-            <button className="quote-button" onClick={() => handleClick(quotes)}>Generate</button>
-        </div>);
+        <div>
+
+            <main style={{ backgroundColor: appColor }} >
+
+                <div className="quote-machine-container" >
+                    <div className="quote-text" style={{ color: appColor }}  >{quote}
+                    </div>
+                    <div className="quote-author" style={{ color: appColor }}  >-{author}</div>
+                    <button className="quote-button" style={{ backgroundColor: appColor }} onClick={() => handleClick(quotes)}>New Quote</button>
+                </div>
+            </main>
+        </div >);
 }
 
 export { RandomQuoteMachine };
