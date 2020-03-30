@@ -13,10 +13,11 @@ const RandomQuoteMachine = () => {
     useEffect(async () => {
         const { data: { quotes } } = await axios.get(randomQuoteSource);
         setQuotes(quotes);
+        handleClick(quotes);
     }, [])
 
 
-    const handleClick = () => {
+    const handleClick = (quotes) => {
         const index = Math.floor(Math.random() * quotes.length + 1);
         setQuote(quotes[index].quote);
         setAuthor(quotes[index].author);
@@ -26,7 +27,7 @@ const RandomQuoteMachine = () => {
             <div className="quote-text">{quote}
             </div>
             <div className="quote-author">-{author}</div>
-            <button className="quote-button" onClick={handleClick}>Generate</button>
+            <button className="quote-button" onClick={() => handleClick(quotes)}>Generate</button>
         </div>);
 }
 

@@ -13,7 +13,7 @@ const Calculator = () => {
                 break;
             case '=':
                 try {
-                    setUserInput(eval((userInput).replace('x', '*')));
+                    setUserInput(eval((userInput).replace('x', '*')).toString());
                 }
                 catch (err) {
                     alert(err.message);
