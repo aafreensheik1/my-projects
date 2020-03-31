@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const MainPage = () => {
     const myApps = {
         "calculator": "Calculator",
-        "weather-app": "Weather App",
+        "weather-app-class": "Weather App Class",
         "drum-machine": "Drum Machine",
         "markdown-previewer": "Markdown Previewer",
         "pomodoro-clock": "Pomodoro Clock",
