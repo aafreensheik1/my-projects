@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import dateBuilder from '../../utilities/date-builder';
 import './weather-app.css';
 
 class WeatherAppClass extends Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
     }
     state = {
         query: '',
@@ -17,18 +18,9 @@ class WeatherAppClass extends Component {
             key: '2e8aa193afccd37c5234655632ed442e',
             base: 'https://api.openweathermap.org/data/2.5/'
         }
-        const dateBuilder = (d) => {
-            let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-            let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-            let day = days[d.getDay()];
-            let date = d.getDate();
-            let month = months[d.getMonth()];
-            let year = d.getFullYear();
-            return `${day} ${date} ${month} ${year}`;
-        }
+
         const handleClick = async () => {
             try {
-
                 const { data } = await axios.get(`${api.base}weather?q=${this.state.query}&units=metric&APPID=${api.key}`);
                 this.setState({ weather: data });
                 this.setState({ errorMessage: null });
